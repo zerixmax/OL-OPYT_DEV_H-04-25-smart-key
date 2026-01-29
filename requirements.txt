@@ -1,0 +1,4 @@
+customtkinter
+colorama
+pyfiglet
+Pillow
