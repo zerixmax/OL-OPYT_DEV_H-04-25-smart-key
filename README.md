@@ -137,15 +137,31 @@ python assets_generator_pro.py
 
 ### 6. Pokreni Aplikaciju
 
-**Windows:**
+**Jednostavno (Koristi Launcher):**
+
+Windows PowerShell:
 ```powershell
+.\run.ps1
+```
+
+Windows CMD:
+```cmd
+run.bat
+```
+
+**Manuelno (Sa Environment Varijablama):**
+
+Windows PowerShell:
+```powershell
+.\venv\Scripts\Activate.ps1
 $env:TCL_LIBRARY="$PWD\venv\tcl\tcl8.6"
 $env:TK_LIBRARY="$PWD\venv\tcl\tk8.6"
 python main.py
 ```
 
-**Linux/Mac:**
+Linux/Mac:
 ```bash
+source venv/bin/activate
 python main.py
 ```
 
