@@ -48,7 +48,7 @@ def draw_smooth_icon(filename, color, icon_type):
         )
         
     elif icon_type == "lock":
-        # Lokot Otključan (Zeleni)
+        # Lokot Otključan (Bijeli)
         # Tijelo
         draw.rounded_rectangle(
             [size*0.2, size*0.4, size*0.8, size*0.9],
@@ -62,18 +62,18 @@ def draw_smooth_icon(filename, color, icon_type):
             fill=color,
             width=35
         )
-        # Ključanica
+        # Ključanica (tamna za kontrast)
         draw.ellipse(
             [center-20, size*0.6-20, center+20, size*0.6+20],
-            fill="white"
+            fill="#333333"
         )
         draw.rectangle(
             [center-8, size*0.6, center+8, size*0.75],
-            fill="white"
+            fill="#333333"
         )
 
     elif icon_type == "lock_closed":
-        # Lokot Zaključan (Crveni) - Veliki
+        # Lokot Zaključan (Bijeli) - Veliki
         # Tijelo
         draw.rounded_rectangle(
             [size*0.15, size*0.4, size*0.85, size*0.95],
@@ -87,14 +87,14 @@ def draw_smooth_icon(filename, color, icon_type):
             fill=color,
             width=40
         )
-        # Ključanica
+        # Ključanica (tamna za kontrast)
         draw.ellipse(
             [center-25, size*0.6-25, center+25, size*0.6+25],
-            fill="white"
+            fill="#333333"
         )
         draw.rectangle(
             [center-10, size*0.6, center+10, size*0.78],
-            fill="white"
+            fill="#333333"
         )
 
     elif icon_type == "user":
@@ -105,14 +105,14 @@ def draw_smooth_icon(filename, color, icon_type):
         draw.chord([40, 130, size-40, size+80], 0, 180, fill=color)
 
     elif icon_type == "admin":
-        # Admin (Ljubičasti) - S krunom/štitom
+        # Admin (Bijeli) - S krunom/štitom
         # Štit oblik
         draw.polygon([
             (center, 20), (size-40, 60), (size-40, 160),
             (center, size-20), (40, 160), (40, 60)
         ], fill=color)
         
-        # Zvijezda unutar štita
+        # Zvijezda unutar štita (tamna za kontrast)
         star_center_x = center
         star_center_y = 110
         star_size = 50
@@ -127,25 +127,25 @@ def draw_smooth_icon(filename, color, icon_type):
             y = star_center_y + radius * math.sin(math.radians(angle))
             points.append((x, y))
         
-        draw.polygon(points, fill="white")
+        draw.polygon(points, fill="#333333")
 
     elif icon_type == "delete":
-        # X za brisanje (Crveni)
+        # X za brisanje (Bijeli)
         # Krug pozadina
         draw.ellipse([20, 20, size-20, size-20], fill=color)
         
-        # Bijeli X (debele linije)
+        # Tamni X za kontrast
         line_width = 30
         offset = size * 0.25
         
         draw.line(
             [offset, offset, size-offset, size-offset],
-            fill="white",
+            fill="#333333",
             width=line_width
         )
         draw.line(
             [size-offset, offset, offset, size-offset],
-            fill="white",
+            fill="#333333",
             width=line_width
         )
     
@@ -160,12 +160,13 @@ def draw_smooth_icon(filename, color, icon_type):
 # === GENERIRANJE IKONA ===
 print("🎨 Generiram profesionalne ikonice...\n")
 
-draw_smooth_icon("bell", "#E67E22", "bell")             # Narančasta
-draw_smooth_icon("lock", "#27AE60", "lock")             # Zelena
-draw_smooth_icon("lock_closed", "#C0392B", "lock_closed")  # Crvena
-draw_smooth_icon("user", "#3498DB", "user")             # Plava
-draw_smooth_icon("admin", "#8E44AD", "admin")           # Ljubičasta
-draw_smooth_icon("delete", "#C0392B", "delete")         # Crvena
+# Sve ikone su bijele boje za bolju vidljivost na obojenim gumbima
+draw_smooth_icon("bell", "white", "bell")             # Bijela
+draw_smooth_icon("lock", "white", "lock")             # Bijela
+draw_smooth_icon("lock_closed", "white", "lock_closed")  # Bijela
+draw_smooth_icon("user", "white", "user")             # Bijela
+draw_smooth_icon("admin", "white", "admin")           # Bijela
+draw_smooth_icon("delete", "white", "delete")         # Bijela
 
 print("\n✅ Sve HQ ikonice su spremne!")
 print("📁 Provjerite folder: assets/")

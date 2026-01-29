@@ -159,7 +159,29 @@ class SmartKeyApp(ctk.CTk):
             font=("Consolas", 12),
             text_color="gray"
         )
-        self.lbl_status.pack(side="bottom", pady=20)
+        self.lbl_status.pack(side="bottom", pady=5)
+        
+        # Dark/Light Mode Selektor
+        mode_frame = ctk.CTkFrame(self.current_frame, fg_color="transparent")
+        mode_frame.pack(side="bottom", pady=10)
+        
+        ctk.CTkLabel(
+            mode_frame,
+            text="Tema:",
+            font=("Roboto", 10),
+            text_color="gray"
+        ).pack(side="left", padx=5)
+        
+        self.mode_switch = ctk.CTkSegmentedButton(
+            mode_frame,
+            values=["🌙 Dark", "☀️ Light"],
+            command=self.change_theme,
+            selected_color="#3B8ED0",
+            selected_hover_color="#2E7CBF",
+            font=("Roboto", 10)
+        )
+        self.mode_switch.set("🌙 Dark")
+        self.mode_switch.pack(side="left", padx=5)
         
         # Footer Potpis
         footer_label = ctk.CTkLabel(
@@ -169,6 +191,20 @@ class SmartKeyApp(ctk.CTk):
             text_color="#333"
         )
         footer_label.pack(side="bottom")
+
+    def change_theme(self, value):
+        """Mijenja temu aplikacije."""
+        if value == "🌙 Dark":
+            ctk.set_appearance_mode("Dark")
+            self.lbl_status.configure(text="Tema: Dark Mode 🌙")
+        else:
+            ctk.set_appearance_mode("Light")
+            self.lbl_status.configure(text="Tema: Light Mode ☀️")
+        
+        # Resetuj status nakon 2 sekunde
+        self.after(2000, lambda: self.lbl_status.configure(
+            text="Sustav spreman."
+        ))
 
     def action_ring(self):
         self.lbl_status.configure(
